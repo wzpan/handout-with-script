@@ -1,0 +1,120 @@
+% Copyright (C) \the\year by Joseph Pan <cs.wzpan@gmail.com>
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.2 of this license or (at your option) any later
+% version. The latest version of this license is in:
+% 
+% http://www.latex-project.org/lppl.txt
+% 
+% and version 1.2 or later is part of all distributions of
+% LaTeX version 1999/12/01 or later.
+
+
+\usepackage{xltxtra}
+\usepackage[]{xkeyval,polyglossia}
+\setmainlanguage{english}
+\usepackage[a5paper,top=2cm, bottom=2cm, left = 2.5cm, right=2cm]{geometry}
+\usepackage[]{csquotes}
+\usepackage[]{titlesec}
+\usepackage[]{url}
+\usepackage[]{paralist}
+\usepackage[absolute]{textpos}
+\usepackage[]{rotating}
+\usepackage[]{scrpage2}
+\usepackage[]{blindtext}
+
+\usepackage[CJKbookmarks=true,pdfborder=0 0 1]{hyperref}
+\usepackage{amsmath,amssymb,wasysym}
+\usepackage{keystroke}
+
+\pagestyle{scrheadings}
+
+\setheadsepline[\textwidth]{0.25pt}{}
+
+\ohead{\headmark}
+\ofoot[\pagemark]{\pagemark}
+\cfoot{}
+\chead{}
+\ihead{\@title}
+
+\usepackage{graphicx}
+\graphicspath{{pages/}}
+
+\usepackage{xcolor}
+\definecolor{msdarkblue}{RGB}{54,95,145}
+\definecolor{msblue}{RGB}{79,129,189}
+
+\titleformat{\section}[hang]{\color{msdarkblue}\Large\sffamily\bfseries}{}{0pt}{\vspace*{-6pt}}
+\titleformat{\subsection}[hang]{\color{msblue}\large\sffamily\bfseries}{}{0pt}{\vspace*{-4pt}}
+\titleformat{\subsubsection}[hang]{\color{msblue}\normalsize\sffamily\bfseries}{}{0pt}{}
+
+
+\newcounter{slidenum}
+\setcounter{slidenum}{1}
+
+\newenvironment{myscript}{%
+  \begin{figure}[hdtp]
+    \centering
+    \fbox{\includegraphics[width=0.9\textwidth]{page\theslidenum.pdf}}
+    \\Page~\theslidenum
+  \end{figure}}
+{
+  \addtocounter{slidenum}{1}
+  \clearpage
+}
+
+\newenvironment{myscriptpage}[1]{%
+  \begin{figure}[hdtp]
+    \centering
+    \fbox{\includegraphics[width=0.9\textwidth]{page#1.pdf}}
+    \\Page~#1
+  \end{figure}}
+{
+  \clearpage
+}
+
+\newcommand{\click}{$\keystroke{click}$}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\usepackage{unicode-math}
+
+\def\maketitle{%
+
+  \setlength{\TPHorizModule}{1mm}
+  \setlength{\TPVertModule}{1mm}
+
+  \begin{titlepage}
+    ~
+    \begin{textblock}{50}(-10,-10)
+      \begin{color}{msdarkblue}
+        \rule{3cm}{25cm}    
+      \end{color}
+    \end{textblock}
+
+    % Logo white
+    \begin{textblock}{130}(30,30)
+      % \rule{2cm}{2cm}\\[2em]
+
+      \includegraphics[height=20mm]{2d.png}
+      
+      {\noindent\Huge\bfseries \@title}
+
+      {\noindent\huge\bfseries (Script)}\\[5em]
+
+      {\noindent\Large\bfseries \@author}
+
+    \end{textblock}
+
+    \begin{textblock}{20}(12,200)
+      \begin{rotate}{90}
+        {\huge\bfseries \textcolor{white}{Script Book}}
+      \end{rotate}
+    \end{textblock}
+
+  \end{titlepage}
+
+  \clearpage
+
+}

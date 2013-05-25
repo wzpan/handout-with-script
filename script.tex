@@ -1,0 +1,172 @@
+% !Mode:: "TeX:UTF-8"
+% Copyright (C) \the\year by Joseph Pan <cs.wzpan@gmail.com>
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.2 of this license or (at your option) any later
+% version. The latest version of this license is in:
+%
+% http://www.latex-project.org/lppl.txt
+%
+% and version 1.2 or later is part of all distributions of
+% LaTeX version 1999/12/01 or later.
+
+\documentclass[10pt]{scrartcl}
+\usepackage{handoutWithScript}
+
+\begin{document}
+
+\title{Handout-With-Script}
+
+\author{Joseph Pan}
+
+\maketitle
+
+\begin{myscript}
+
+  Welcome to use \textcolor{blue}{Handout-With-Script}! 
+
+  I'm Weizhou Pan, alternatively you can call me Joseph. $\smiley$
+
+\end{myscript}
+
+\begin{myscript}
+  \textsl{Handout-With-Script} is a \LaTeX{} template for generating a handout
+  with script for presentation. When you are writing a script, it can
+  automatically insert the slide you already created in your slides file into
+  your script. This is very handy for someone that need to practice his/her
+  presentation with script and the slides at the same time.
+
+  In the following pages we will show how to use \textsl{Handout-With-Script} to
+  write a script.
+\end{myscript}
+
+\begin{myscript}
+  Before we get started, let's find out what are the dependecies of 
+  \textsl{Handout-With-Script}: 
+
+  \begin{enumerate}
+  \item \href{http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/}{\textbf{pdftk}} -
+    a CLI tool for manipulating PDF documents. We will use it to split the
+    slides into pages. PDFtk Server can runs on Windows, Mac OS X and
+    Linux, which makes our template cross-platform. \click
+  \item \textbf{slides.pdf} - your slides for writing script for. It's not
+    strange that you should make slides before writing scripts, right? $\smiley$
+  \end{enumerate}
+\end{myscript}
+
+\begin{myscript}
+  So the pipeline of using \textsl{Handout-With-Script} goes like this: 
+
+  \begin{enumerate}
+  \item Make your slides; \click
+  \item Output it as pdf file. Almost all the format of slides offers the
+    functions to export the slides as pdf format. \textsl{e.g.} Microsoft
+    Powerpoint, Libre Office, etc. If you use \LaTeX{}+Beamer to write slides,
+    make sure you use the ``handout'' document class option, so as to output as
+    a handout without the redundent overlay pages; \click
+  \item Rename it as \verb|slides.pdf| and put it into the same folder as
+    \verb|script.tex|; \click
+  \item Write your script! 
+  \end{enumerate}
+\end{myscript}
+
+\begin{myscript}
+  \textsl{Handout-With-Script} is very simple and there are only 3 usages you
+  need to keep them in mind. First of all, it offers 2 \LaTeX{} environments: 
+
+  The first one is \verb|myscriptpage|, which \textcolor{blue}{1)} creates a new
+  page where you can write your script, and \textcolor{blue}{2)} inserts a slide at the top of the
+  page. The slide comes from a specified page from \verb|slides.pdf|.  When
+  using it, a page number is also needed to point out which slide to insert.
+  \click
+
+  But most of the time you \textbf{DO NOT} have to explicitly point out the page
+  number! An intuitive way to liberate us from typing such stupid numbers is
+  that we always play the slides page-by-page, in other words, incrementally! So
+  here comes another environment called \verb|myscript|, which inserts a slide
+  that implicitly specified by a page counter. When you finished writing the
+  script of this page by ending as \verb|\end{mycript}|, the page counter will
+automatically be added with 1 so as to point to next page.
+
+Also we offer a command \verb|\click|, which will output a sweet \click icon
+that indicates a mouse clicking. It will be useful for some slides that contains
+many layouts and animations and may confuses the presenter when to click the
+mouse.
+
+  In the following slides we will show some examples of the above two environments.
+\end{myscript}
+
+\begin{myscriptpage}{10}
+  This page will insert the slide 10.
+\begin{verbatim}
+    \begin{myscriptpage}{10}
+      This page will insert the slide 10.
+    \end{myscriptpage}
+\end{verbatim}
+\end{myscriptpage}
+
+\begin{myscript}
+  This page will insert the slide \theslidenum.
+\begin{verbatim}
+    \begin{myscript}
+      This page will insert the slide \theslidenum.
+    \end{myscript}
+\end{verbatim}
+\end{myscript}
+
+\begin{myscript}
+  This page will insert the slide \theslidenum.
+\begin{verbatim}
+    \begin{myscript}
+      This page will insert the slide \theslidenum.
+    \end{myscript}
+\end{verbatim}
+\end{myscript}
+
+\begin{myscript}
+  This page will insert the slide \theslidenum.
+\begin{verbatim}
+    \begin{myscript}
+      This page will insert the slide \theslidenum.
+    \end{myscript}
+\end{verbatim}
+\end{myscript}
+
+\begin{myscript}
+  This page will insert the slide \theslidenum.
+\begin{verbatim}
+    \begin{myscript}
+      This page will insert the slide \theslidenum.
+    \end{myscript}
+\end{verbatim}
+\end{myscript}
+
+\begin{myscript}
+  This page will insert the slide \theslidenum.
+\begin{verbatim}
+    \begin{myscript}
+      This page will insert the slide \theslidenum.
+    \end{myscript}
+\end{verbatim}
+\end{myscript}
+
+\begin{myscriptpage}{1}
+  This page will insert the slide 1.
+\begin{verbatim}
+    \begin{myscriptpage}{1}
+      This page will insert the slide 1.
+    \end{myscriptpage}
+\end{verbatim}
+\end{myscriptpage}
+
+
+\begin{myscript}
+  Thank you!
+\end{myscript}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
